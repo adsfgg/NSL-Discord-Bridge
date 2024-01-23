@@ -18,7 +18,7 @@ local function PostMessage(msg)
     assert(string.len(msg) > 0)
 
     params = {
-        content=string.format("%s|%s", msg, Server.GetIpAddress()),
+        content=string.format("%s|%s|%s", msg, Server.GetIpAddress(), Server.GetPort()),
         username="Match Reporter"
     }
     Shared.SendHTTPRequest(kURL, "POST", params,
