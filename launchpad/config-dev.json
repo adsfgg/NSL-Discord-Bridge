@@ -1,0 +1,17 @@
+{
+    "publish_id": "",
+    "name": "NSL Discord Bridge (Testing)",
+    "description": [
+        "[h1]NSL Discord Bridge[/h1]",
+        "",
+        "Simple Discord bridge that posts to the specified Discord webhook once a round ends",
+        "",
+        "[h2]Usage:[/h2]",
+        "Install and setup configs/NSL-Discord-Bridge.json",
+        "",
+        "Format:",
+        "{",
+        "        'discordWebhookUrl': 'URL HERE'",
+        "}"
+    ]
+}

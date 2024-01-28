@@ -3,6 +3,12 @@
 build_dir="build"
 
 function main() {
+    local config_path="launchpad/config-$1.json"
+    test -f "$config_path" || {
+        echo "Config \"$config_path\" not found";
+        exit 1;
+    }
+
     # Check for outstanding commits
     test -d .git && test -n "$(git status --porcelain)" && { echo "ERROR: You have outstanding commits, please commit before creating a build"; exit 1; }
 
@@ -14,9 +20,9 @@ function main() {
     mkdir "$build_dir"
 
     # Load config
-    local publish_id="$(jq -r .publish_id launchpad/config.json)"
-    local name="$(jq -r .name launchpad/config.json)"
-    local description="$(jq -r .description launchpad/config.json | jq -r '.[]')"
+    local publish_id="$(jq -r .publish_id $config_path)"
+    local name="$(jq -r .name $config_path)"
+    local description="$(jq -r .description $config_path| jq -r '.[]')"
     local content_dir="content"
 
     mkdir "$build_dir/$content_dir"
@@ -45,4 +51,4 @@ EOF
     echo "Build created in $build_dir"
 }
 
-main
+main $@

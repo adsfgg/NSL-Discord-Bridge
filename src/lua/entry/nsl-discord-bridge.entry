@@ -1,4 +1,0 @@
-modEntry = {
-    FileHooks = "lua/NSL-Discord-Bridge/FileHooks.lua",
-    Priority = 0   
-}
